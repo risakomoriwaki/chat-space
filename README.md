@@ -29,19 +29,26 @@ Things you may want to cover:
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
-|name|string|null: false, foreign_key: true|
-|email|string|null: false, foreign_key: true|
-|password|string|null: false, foreign_key: true|
+
 
 ## Association
 - belongs_to :group
 - belongs_to :user
+
+## usersテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false,index: true unique: true|
+|user_id|integer|null: false, foreign_key: true|
+|email|string|null: false, foreign_key: true|
+|password|string|null: false, foreign_key: true|
+
+## Association
 - has_many :massages
 - has_many :groups
 
-
-
-## groupテーブル
+## groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -52,3 +59,11 @@ Things you may want to cover:
 ## Association
 - has_many :users
 
+## massagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|hull: false, foreign_key: true|
+
+## Association
+- belongs_to :user
