@@ -46,6 +46,7 @@ Things you may want to cover:
 ## Association
 - has_many :massages
 - has_many :groups,through: members
+- has_many :members
 
 ## groupsテーブル
 
@@ -58,6 +59,7 @@ Things you may want to cover:
 ## Association
 - has_many :users
 - has_many :users,through: members
+- has_many :members
 
 ## massagesテーブル
 |Column|Type|Options|
