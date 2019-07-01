@@ -44,7 +44,7 @@ Things you may want to cover:
 |password|string|null: false, foreign_key: true|
 
 ## Association
-- has_many :massages
+- has_many :messages
 - has_many :groups,through: members
 - has_many :members
 
@@ -52,21 +52,22 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|
+|name|string|null: false|
 
 
 ## Association
-- has_many :users
 - has_many :users,through: members
 - has_many :members
+- has_many :messages
 
-## massagesテーブル
+## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|hull: false, foreign_key: true|
+|text|text|
+|image|string|
 
 ## Association
 - belongs_to :user
-- belongs_to :groups
+- belongs_to :group
