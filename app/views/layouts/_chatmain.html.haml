@@ -1,0 +1,32 @@
+.chat-main
+  .main-header
+    .current-group
+      %h2.current-group__name 
+        example
+      %ul.member-list
+        Member :
+        %li.member-list__member
+          aaa
+        %li.member-list__member
+          iii
+      .main-header__edit-btn
+        %a
+          Edit
+        
+  .messages
+    .message
+      .upper-info
+        %p.upper-info__user
+          moriwaki
+        %p.upper-info__date
+          2019/7/00(Thu)00:00:00
+      %p.message__text
+        aaa
+  .form
+    %form.new-message
+      .input-box
+        type a message
+        .image-label
+          = fa_icon 'image'
+      .new-message__submit-btn
+        Send
