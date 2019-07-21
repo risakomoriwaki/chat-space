@@ -13,4 +13,5 @@ class GroupsController < ApplicationController
   def update
   end
 
+  # コメント
 end
