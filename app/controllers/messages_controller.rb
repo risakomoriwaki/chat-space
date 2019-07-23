@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @groups = group.find(params[:id])
+    @group = Group.find(1)
   end
 
   def create

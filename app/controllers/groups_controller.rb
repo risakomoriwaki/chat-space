@@ -1,22 +1,48 @@
 class GroupsController < ApplicationController
 
+  def index
+    
+  end
+
   def new
+    @group = Group.new
+    @group.users << current_user
   end
 
   def create
-    @group = group.new(group_params)
+    @group = Group.new(group_params)
+    if @group.save
+      redirect_to root_path, notice: 'グループを作成しました'
+    else
+      render :new
     end
   end
 
-  def edit
-    @group = Gweet.find(params[:id])
-  end
-
   def update
-    @group = Group.find(params[:id])
-    if group.user_id == current_user.id
-      group.update(group_params)
-      end
+    if @group.update(group_params)
+      redirect_to group_message_path(@group).notice:'グループを編集しました'
+    else
+      render :edit
+    end
   end
 
+  private
+  def group_params
+    params.require(:group).permit(:name, { :user_ids => []})
+  end
+
+  def set_group
+    @group = Group.find(params[:id])
+  end
 end
+  # 自分で記述したけどいらなそう
+  # def edit
+  #   @group = Gweet.find(params[:id])
+  # end
+
+  # def update
+  #   @group = Group.find(params[:id])
+  #   if group.user_id == current_user.id
+  #     group.update(group_params)
+  #     end
+  # end
