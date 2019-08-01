@@ -3,13 +3,9 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
-
+  
 
   def edit
-    if current_user.edit(user_params)
-      redirect_to root path
-    else
-      render :edit
   end
 
   def update
@@ -20,11 +16,10 @@ class UsersController < ApplicationController
     end
   end
 
-  
-
   private
 
   def user_params
     params.require(:user).permit(:name, :email)
   end
+
 end

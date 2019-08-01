@@ -49,11 +49,43 @@
     }
   }
 }
+
+
+
 .chat-main {
   width: calc(100vw - 300px);
   float: left;
-}
+  
+  
+  .hidden{
+    display: none;
+  }
 
+  
+  
+  .new-message {
+    display: flex;
+    line-height: 50px;
+    &__submit-btn {
+      height: 48px;
+      width: 100px;
+      border: 1px;
+      padding: 0 30px;
+      margin: 0 0 0 15px;
+      background-color: #38aef0;
+      color: white;
+      text-align: center;
+      line-height: 50px;
+    }
+  }
+  
+  
+  .current-group {
+    margin-top: 35px;
+    &__name {
+      font-size: 20px;
+    }
+  }
   .main-header {
     height: 100px;
     padding: 0 40px;
@@ -70,50 +102,44 @@
       margin: 28px 0 0 0;
     }
   }
-  
-  
-.current-group {
-  margin-top: 35px;
-  &__name {
-    font-size: 20px;
-  }
-}
 
-.member-list {
-  display: flex;
-  margin-top: 15px;
-  font-size: 12px;
-  color: #999999;
-  &__member {
-    color: #999999;
-    font-size: 12px
-  }
-}
-.messages {
-  height: calc(100vh - 282px);
-  padding: 46px 40px;
-  background-color: #fafafa;
-  overflow: scroll;
-}
 
-.message {
-  height: 65px;
-  box-sizing: border-box;
-  padding-bottom: 40px;
-  background-color: #fafafa;
-  overflow: scroll;
-}
-
-.upper-info {
-  display: flex;
-  &__user {
-    color: #434a54;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  &__date {
+  .member-list {
+    display: flex;
+    margin-top: 15px;
     font-size: 12px;
-    margin: 0 0 0 10px
+    color: #999999;
+    &__member {
+      color: #999999;
+      font-size: 12px
+    }
+  }
+  .messages {
+    height: calc(100vh - 282px);
+    padding: 46px 40px;
+    background-color: #fafafa;
+    overflow: scroll;
+  }
+
+  .message {
+    height: 65px;
+    box-sizing: border-box;
+    padding-bottom: 40px;
+    background-color: #fafafa;
+    overflow: scroll;
+  }
+
+  .upper-info {
+    display: flex;
+    &__user {
+      color: #434a54;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    &__date {
+      font-size: 12px;
+      margin: 0 0 0 10px
+    }
   }
 }
 
@@ -121,39 +147,43 @@
   height: 50px;
   padding: 20px 40px;
   background-color: #ddd;
-}
+  .new_message {
+    display: flex;
+    position: relative;
+  }
+  &__message {
+    height: 50px;
+    width: 100%;
+    padding: 0 40px 0 10px;
+    color: #434a54;
+    border-style: none;
+    // position: relative;
+  }
 
-.input-box{
-  box-sizing: border-box;
-  height: 50px;
-  width: 935px;
-  padding: 0 40px 0 10px;
-  color: #434a54;
-  border-style: none;
-  background-color: white;
-  display: flex;
-  position:relative;
-}
-
-.image-label {
-  display: flex-end;
-  position:absolute; right:10px;
-
-}
-
-.new-message {
-  display: flex;
-  line-height: 50px;
-  &__submit-btn {
-    height: 48px;
-    width: 38px;
-    border: 1px;
-    padding: 0 30px;
-    margin: 0 0 0 15px;
-    background-color: #38aef0;
-    color: white;
-    text-align: center;
-    line-height: 50px;
+  &__mask {
+    font-size: 1.3rem;
+    position: absolute; 
+    right: 125px; bottom: 10px;
+    // right: 165px; bottom: 30px;
+    cursor: pointer;
   }
 }
-  
+
+.new_message {
+  display: flex;
+}
+
+
+.form__submit {
+  width: 100px;
+  height: 50px;
+  padding: 0 30px;
+  margin-left: 15px;
+  background-color: #38aef0;
+  color: white;
+  cursor: pointer;
+}
+
+.input-box__textx {
+
+}
