@@ -12,16 +12,27 @@ class MessagesController < ApplicationController
   # 「n + 1 問題」を避けるために、includes(:user)の記述を忘れずに行いましょう。
 
   def create
-    if @message.save
-      format.html {redirect_to group_messages_path(@group), notice: 'メッセージが送信されました'}
-      format.json
-    else
-      @messages = @group.messages.includes(:user)
-      flash.now[:alert] = 'メッセージを入力してください。'
-      render :index
+    @message = @group.messages.new(message_params)
+    respond_to do |format|
+        format.html {
+          if @message.save
+            redirect_to group_messages_path(@group), notice: 'メッセージが送信されました'
+          else
+            @messages = @group.messages.includes(:user)
+            flash.now[:alert] = 'メッセージを入力してください。'
+            render :index
+          end
+        }
+        format.json
     end
   end
 
+
+
+  respond_to do |format|
+    format.html { redirect_to tweet_path(params[:tweet_id])  }
+    format.json
+  end
 
   private
 
@@ -32,5 +43,4 @@ class MessagesController < ApplicationController
   def set_group
     @group = Group.find(params[:group_id])
   end
-
 end
