@@ -24,8 +24,6 @@ $(function(){
     const formData = new FormData($(this).get()[0]);
     var url = $(this).attr('action')
     
-
-    console.log(formData)
     $.ajax({
       url: url,
       type: "POST",
@@ -33,7 +31,6 @@ $(function(){
       dataType: 'json',
       processData: false,
       contentType: false
-      // disabled: false
     })
     .done(function(data){
       var html = buildHTML(data);
@@ -44,7 +41,6 @@ $(function(){
   
     })
     .fail(function(){
-      console.log('error')
       alert('error');
     })
   })
