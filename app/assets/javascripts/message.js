@@ -1,18 +1,31 @@
 $(function(){
   function buildHTML(message){
-    var html = `<p>
-                  <strong>
-                    <a href=/users/${message.user_id}>${message.user_name}</a>
-                    ：
-                  </strong>
-                  ${message.content}
-                </p>`
+    var addImage = (message.image.url ) ? `<img class = "image_size", src="${message.image.url}">` : ''
+    var html = `<div class = "message">
+                  <div class = upper-info>
+                    <div class = "upper-info__user">
+                      ${message.user_name}
+                    </div>
+                    <div class = "upper-info__date">
+                      ${message.date}
+                    </div>
+                  </div>
+                  <div class = "message__text">
+                    <p class = "lower-message__content">
+                      ${message. content}
+                    </p>
+                      ${addImage}
+                  </div>
+                </div>`
     return html;
   }
   $('#new_message').on('submit', function(e){
     e.preventDefault();
-    var formData = new FormData(this);
+    const formData = new FormData($(this).get()[0]);
     var url = $(this).attr('action')
+    
+
+    console.log(formData)
     $.ajax({
       url: url,
       type: "POST",
@@ -20,13 +33,18 @@ $(function(){
       dataType: 'json',
       processData: false,
       contentType: false
+      // disabled: false
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.messages').append(html)
-      $('.textbox').val('')
+      $('.messages').append(html);
+      $('.form__message').val('');
+      $('.messages').animate({scrollTop: $(".messages")[0].scrollHeight}, "fast");
+      $('.form__submit').attr('disabled', false);
+  
     })
     .fail(function(){
+      console.log('error')
       alert('error');
     })
   })
