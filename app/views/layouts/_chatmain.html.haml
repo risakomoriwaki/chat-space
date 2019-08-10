@@ -1,23 +1,12 @@
 .main-header
   .current-group
     %h2.current-group__name 
-      example
+      = @group.name
     %ul.member-list
       Member :
       %li.member-list__member
-        aaa
-      %li.member-list__member
-        iii
+        - @group.users.each do |group_user|
+          = group_user.name
   .main-header__edit-btn
-    %a
+    = link_to edit_group_path(@group) do
       Edit
-      
--# .messages
--#   .message
--#     .upper-info
--#       %p.upper-info__user
--#         moriwaki
--#       %p.upper-info__date
--#         2019/7/00(Thu)00:00:00
--#     %p.message__text
--#       aaa
