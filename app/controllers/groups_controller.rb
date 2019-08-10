@@ -1,5 +1,7 @@
 class GroupsController < ApplicationController
 
+  before_action :set_group, except: [:index]
+
   def index
   end
 
