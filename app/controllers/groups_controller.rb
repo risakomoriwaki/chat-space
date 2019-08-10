@@ -1,7 +1,6 @@
 class GroupsController < ApplicationController
 
   def index
-    
   end
 
   def new
@@ -18,9 +17,13 @@ class GroupsController < ApplicationController
     end
   end
 
+  def edit
+    @group = Group.find(params[:id])
+  end
+
   def update
     if @group.update(group_params)
-      redirect_to group_message_path(@group).notice:'グループを編集しました'
+      redirect_to group_messages_path(@group.id),notice:'グループを編集しました'
     else
       render :edit
     end
@@ -35,14 +38,3 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 end
-  # 自分で記述したけどいらなそう
-  # def edit
-  #   @group = Gweet.find(params[:id])
-  # end
-
-  # def update
-  #   @group = Group.find(params[:id])
-  #   if group.user_id == current_user.id
-  #     group.update(group_params)
-  #     end
-  # end

@@ -127,7 +127,7 @@
   }
 
   .message {
-    height: 65px;
+    //height: 65px;
     box-sizing: border-box;
     padding-bottom: 40px;
     background-color: #fafafa;
@@ -186,4 +186,9 @@
   background-color: #38aef0;
   color: white;
   cursor: pointer;
+}
+
+.group_messages_path{
+  color: white;
+  text-decoration: none;
 }

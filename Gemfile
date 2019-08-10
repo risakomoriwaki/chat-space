@@ -41,7 +41,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
-  gem 'faker'
+  gem 'faker','1.9.6'
 
 end
 
@@ -62,3 +62,4 @@ gem 'haml-rails'
 gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'pry-rails'

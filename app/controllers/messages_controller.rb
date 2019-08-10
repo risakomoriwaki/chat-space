@@ -6,6 +6,8 @@ class MessagesController < ApplicationController
   def index
     @message = Message.new
     @messages = @group.messages.includes(:user)
+    # @group_users = Group_user.find(params[:name,:user_id])
+
   end
   # indexアクションでは、Messageモデルの新しいインスタンスである@message、
   # グループに所属する全てのメッセージである@messagesを定義しています。
