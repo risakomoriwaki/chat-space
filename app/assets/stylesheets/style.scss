@@ -127,7 +127,6 @@
   }
 
   .message {
-    //height: 65px;
     box-sizing: border-box;
     padding-bottom: 40px;
     background-color: #fafafa;
@@ -152,23 +151,19 @@
   height: 50px;
   padding: 20px 40px;
   background-color: #ddd;
-  &__new_message {
-    
-  }
+
   &__message {
     height: 50px;
     width: 100%;
     padding: 0 40px 0 10px;
     color: #434a54;
     border-style: none;
-    // position: relative;
   }
 
   &__mask {
     font-size: 1.3rem;
     position: absolute; 
     right: 165px; bottom: 30px;
-    // right: 165px; bottom: 30px;
     cursor: pointer;
   }
 }
