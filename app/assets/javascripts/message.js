@@ -2,7 +2,7 @@ $(document).on('turbolinks:load',function() {
   function buildHTML(message){
     var addImage = (message.image.url ) ? `<img class = "image_size", src="${message.image.url}">` : ''
     var html = `<div class = "message">
-                  <div class = upper-info>
+                  <div class = "upper-info" data-message-id=${message.id}>
                     <div class = "upper-info__user">
                       ${message.user_name}
                     </div>
@@ -43,5 +43,35 @@ $(document).on('turbolinks:load',function() {
     .fail(function(){
       alert('error');
     })
-  })
+    });
+
+    var reloadMessages = function() {
+      last_message_id = $('.upper-info:last').data("message-id")
+
+      $.ajax({
+        url:  'api/messages',
+        type: 'get',
+        dataType: 'json',
+        data: {id: last_message_id}
+      })
+      .done(function(messages) {
+        console.log('success');
+        //追加するHTMLの入れ物を作る
+        var insertHTML = '';
+        //配列messagesの中身一つ一つを取り出し、HTMLに変換したものを入れ物に足し合わせる
+        messages.forEach(function(message) {
+        //メッセージが入ったHTMLを取得
+        insertHTML = buildHTML(message);
+        //メッセージを追加
+        $('.messages').append(insertHTML);
+        })
+        $('.messages').animate({scrollTop: $(".messages")[0].scrollHeight}, "fast");
+      })
+      .fail(function() {
+        console.log('error');
+      });
+    }
+
+    setInterval(reloadMessages, 10000);
+    
 })
