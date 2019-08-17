@@ -24,7 +24,7 @@ $(document).on('turbolinks:load',function() {
   }
 
 
-  $(".chat-group-form__input").on("input", function() {
+  $("#user-search-field").on("input", function() {
     var input = $("#user-search-field").val();
     $.ajax({
       type: 'GET',
