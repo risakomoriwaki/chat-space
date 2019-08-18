@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load',function() {
   function buildHTML(message){
-    var addImage = (message.image.url ) ? `<img class = "image_size", src="${message.image.url}">` : ''
+    var addImage = (message.image.url ) ? `<img class = "lower-message__image", src="${message.image.url}">` : ''
     var html = `<div class = "message" data-message-id=${message.id}>
                   <div class = "upper-info">
                     <div class = "upper-info__user">
@@ -38,14 +38,13 @@ $(document).on('turbolinks:load',function() {
       $('.messages').animate({scrollTop: $(".messages")[0].scrollHeight}, "fast");
       $('#new_message')[0].reset();
       $('.form__submit').attr('disabled', false);
-  
     })
     .fail(function(){
       alert('error');
     })
     });
 
-     var reloadMessages =  function() {
+    var reloadMessages =  function() {
       if (window.location.href.match(/\/groups\/\d+\/messages/),('.group__latest-message')){
         //last_message_id = $('.upper-info:last').data("message-id")
         last_message_id = $('.message:last').data("message-id")
@@ -75,6 +74,6 @@ $(document).on('turbolinks:load',function() {
         });
       }
     }
-      setInterval(reloadMessages, 5000);  
-      
+    setInterval(reloadMessages, 5000);  
+    
 })
